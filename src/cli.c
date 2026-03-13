@@ -180,10 +180,17 @@ static ParseBenchmarkTypeMaskResult ParseBenchmarkTypeMask(const c8 *Str) {
 NORETURN void Usage(const c8 *const ProgramName, const ExitStatus Status) {
   FILE *Out = (Status == ExitStatus_FAILURE ? stderr : stdout);
   fprintf(Out, "Usage: %s [options] <N>\n\n", ProgramName);
-  fputs("N                              target value\n", Out);
+  fputs("N                                   target value\n", Out);
   fputs("Options:\n", Out);
-  fputs("    -h, -u, --help, --usage    display this message\n", Out);
-  fputs("    -v, --version              display version\n", Out);
+  fputs("    -t, --trace, --trace=<TRACE>    select trace level (none, result, "
+        "all), default none\n",
+        Out);
+  fputs("    -r, --run                       select running method "
+        "(sequential, sequential_cached, parallel, parallel_cached), default "
+        "all\n",
+        Out);
+  fputs("    -h, -u, --help, --usage         display this message\n", Out);
+  fputs("    -v, --version                   display version\n", Out);
 
   exit((i32)Status);
 }
